@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+{% load staticfiles %}
+{% block head_title %}
+    GoFriend | Find Events
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/event/event-search.css" %}">
+{% endblock %}
+
+{% block main %}
+    <div class="col-sm-12">
+
+        <div class="panel panel-default row">
+            <div class="panel-heading" id="find-event-top"> Find Events
+            </div>
+        </div>
+        <div id="startscreen" class="col-sm-12 row">
+            <div class="col-md-8">
+                {% for event in events %}
+                    <div class="timeline-block">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="media">
+                                    <a href="" class="pull-left">
+                                        <img src="/static/{{ event.image }}" class="media-object img-responsive"
+                                             style="height: 50px">
+                                    </a>
+
+                                    <div class="media-body">
+                                        <a href="#" class="pull-right text-muted"><i
+                                                class="icon-reply-all-fill fa fa-2x "></i></a>
+                                        <a href=""></a>
+                                        <span>{{ event.title }} </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                {#                            <tabset>#}
+                                {#                                <tab heading="Interests" ng-show="userinfo.interests != null">#}
+                                {#                                    <span  ng-repeat="(key,val) in userinfo.interests">#}
+                                {#                                        <div class="interest-name" ng-bind="key | limitTo:11"></div>#}
+                                {#                                        <img class="interest-photo" src="{{ val }}" alt=""/>#}
+                                {#                                    </span>#}
+                                {#                                </tab>#}
+                                {##}
+                                {#                                <tab heading="Music" ng-show="userinfo.music != null">#}
+                                {#                                    <span  ng-repeat="(key,val) in userinfo.music">#}
+                                {#                                        <div class="interest-name" ng-bind="key | limitTo:11"></div>#}
+                                {#                                        <img class="interest-image" src="{{ val }}" alt=""/>#}
+                                {#                                    </span>#}
+                                {#                                </tab>#}
+                                {##}
+                                {#                                <tab heading="Subscriptions" ng-show="userinfo.subs != null">#}
+                                {#                                    <span  ng-repeat="(key,val) in userinfo.subs">#}
+                                {#                                        <div class="interest-name" ng-bind="key | limitTo:11"></div>#}
+                                {#                                        <img  class="interest-photo" src="{{ val }}" alt=""/>#}
+                                {#                                    </span>#}
+                                {#                                </tab>#}
+                                {##}
+                                {#                                <tab heading="Photos" ng-show="userinfo.photos != null">#}
+                                {#                                    <span  ng-repeat="(key,val) in userinfo.photos">#}
+                                {#                                        <img class="interest-photo" src="{{ val }}" alt="" style="margin-left: 30px; padding-top: 10px"/>#}
+                                {#                                    </span>#}
+                                {#                                </tab>#}
+                                {##}
+                                {#                          </tabset>#}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-2 col-md-offset-1" id="map"></div>
+        </div>
+    </div>
+
+    <div id="main-menu-bg"></div>
+
+
+{% endblock main %}
+

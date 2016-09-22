@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head_title %}
+    GoFriend | My Settings
+{% endblock %}
+
+{% block content %}
+    {% verbatim %}
+        <div class="row" ng-controller="settingsController">
+            <div class="col-sm-7 col-md-offset-2">
+                <form ng-submit="settingsForm()" role="form">
+                    <div class="form-group">
+                        <label for="userName">Username</label>
+                        <input maxlength="20" class="form-control" type="text" ng-model="form.user.username"
+                               placeholder="Event title" ng-required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input maxlength="30" class="form-control" type="text" ng-model="form.user.first_name"
+                               placeholder="Event title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input maxlength="30" class="form-control" type="text" ng-model="form.user.last_name"
+                               placeholder="Event title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Bio">My Bio</label>
+                        <textarea maxlength="500" class="form-control" ng-model="form.bio"
+                               placeholder="Event title" ng-required="true"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="current">Current Password</label>
+                        <input maxlength="15"  class="form-control" type="text" ng-model="form.user.current_pass"
+                              ng-required="true"/>
+                    </div>
+                    <button type="submit" value="submit" class="btn btn-primary ">Update</button>
+                </form>
+            </div>
+        </div>
+        <div id="main-menu-bg"></div>
+    {% endverbatim %}
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/profile/settings.js' %}"></script>
+{% endblock %}

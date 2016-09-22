@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+
+{% block head_title %}
+    GoFriend | Post Event
+{% endblock %}
+
+{% block extra_css %}
+    {% render_bundle 'date_picker' %}
+{% endblock %}
+
+{% block content %}
+    <div id="create-event-jsx"></div>
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&dummy=.js"></script>
+    {% render_bundle 'create_event' %}
+{% endblock %}

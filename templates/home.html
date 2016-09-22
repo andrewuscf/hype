@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load socialaccount %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+{% block head_title %}Hype{% endblock %}
+
+{% block content %}
+
+    <div id="home-jsx"></div>
+
+{% endblock %}
+
+{% block extra_js %}
+    {#  <script>#}
+    {#    var user = "{{ user.id }}";#}
+    {#    var username = "{{ user.username }}";#}
+    {#  </script>#}
+    {% render_bundle 'home' %}
+{% endblock %}

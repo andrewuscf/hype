@@ -1,0 +1,27 @@
+table td{
+    min-width: 5px!important;
+    padding-right: 15px;
+}
+
+.date-input{
+    padding-top: 30px;
+}
+.date-input .form-control{
+    width: 90%;
+}
+
+.time-input{
+    max-width: 200px;
+}
+
+.calender-btn{
+    height: 34px;
+    background-color: green;
+    color: white;
+}
+
+.submit-btn{
+    background-color: green;
+    color: white;
+}
+

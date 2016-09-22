@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load render_bundle from webpack_loader %}
+{% load account %}
+{% load socialaccount %}
+{% block head_title %}
+  GoFriend | My Profile
+{% endblock %}
+
+
+{% block content %}
+  <div id="profile-jsx"></div>
+{% endblock %}
+
+
+{% block extra_js %}
+  <script>
+  var CURRENT_USER = '{{ request.user.username }}';
+  var PROFILE_USER = '{{ profile_user }}';
+  </script>
+  {% render_bundle 'profile' %}
+{% endblock %}

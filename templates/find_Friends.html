@@ -1,0 +1,80 @@
+{% extends 'home.html' %}
+{%  load staticfiles %}
+{% load render_bundle from webpack_loader %}
+
+{% block content %}
+
+    <div id="find-friends-jsx"></div>
+
+{#{% verbatim %}#}
+{#<div class="row" ng-controller="listController" ng-cloak>#}
+{#    <div class="col-sm-7">#}
+{#        <div class="col-sm-12">#}
+{##}
+{#            <div class="timeline-block" ng-repeat="userinfo in markers | orderBy:order" is-open="userinfo.open">#}
+{#                    <div class="panel panel-default">#}
+{#                        <div class="panel-heading" ng-click="openInfoWindow($event, userinfo)">#}
+{#                            <div class="media">#}
+{#                                <a class="pull-left search-profile-photo" ng-click="goToProfile($event, userinfo.username)">#}
+{#                                    <img src="{{ userinfo.profilePhoto }}" class="media-object img-responsive" style="height: 50px">#}
+{#                                </a>#}
+{#                                <div class="media-body">#}
+{#                                    <div class="pull-right text-center">Related: <span ng-bind="userinfo.total"></span></div>#}
+{#                                    <a ng-bind="userinfo.username| capitalize"></a>#}
+{#                                    <div>Age: <span ng-bind="userinfo.age"></span> </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="panel-body hidden" id="panel{{ userinfo.id }}">#}
+{#                            <tabset>#}
+{#                                <tab heading="Interests" ng-if="userinfo.interests.length != 0">#}
+{#                                    <span  ng-repeat="interest in userinfo.interests">#}
+{#                                        <div class="interest-name" ng-bind="interest.name | limitTo:11"></div>#}
+{#                                        <img class="interest-photo" ng-src="{{ interest.image }}" alt=""/>#}
+{#                                    </span>#}
+{#                                </tab>#}
+{##}
+{#                                <tab heading="Music"  ng-if="userinfo.music.length != 0">#}
+{#                                    <span  ng-repeat="music in userinfo.music">#}
+{#                                        <div class="interest-name" ng-bind="music.artist | limitTo:11"></div>#}
+{#                                        <img class="interest-image" ng-src="{{ music.image }}" alt=""/>#}
+{#                                    </span>#}
+{#                                </tab>#}
+{##}
+{#                                <tab heading="Subscriptions" ng-if="userinfo.subs.length != 0">#}
+{#                                    <span  ng-repeat="sub in userinfo.subs">#}
+{#                                        <div class="interest-name" ng-bind="sub.title | limitTo:11"></div>#}
+{#                                        <img  class="interest-photo" ng-src="{{ sub.image }}" alt=""/>#}
+{#                                    </span>#}
+{#                                </tab>#}
+{##}
+{#                                <tab heading="Photos" ng-if="userinfo.photos.length != 0">#}
+{#                                    <span  ng-repeat="(key,val) in userinfo.photos">#}
+{#                                        <img class="interest-photo" ng-src="{{ val }}" alt="" style="margin-left: 30px; padding-top: 10px"/>#}
+{#                                    </span>#}
+{#                                </tab>#}
+{##}
+{#                          </tabset>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <!--map-->#}
+{#      <div class="col-sm-3">#}
+{#          <div class="row">#}
+{#                <div class="col-sm-12 map-title">People near you</div>#}
+{#                    <div id="map"></div>#}
+{#        	    <hr>#}
+{#          </div>#}
+{#      </div>#}
+{#</div>#}
+{#{% endverbatim %}#}
+
+
+{% endblock content %}
+{% block extra_js %}
+    {% render_bundle 'find_friends' %}
+{#    <script type="text/javascript" src="{% static 'js/people/find-people.js' %}"></script>#}
+{% endblock %}

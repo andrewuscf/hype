@@ -1,0 +1,51 @@
+{% load staticfiles %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+<head>
+    <title>{% block head_title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    {% block meta_tags %}{% endblock %}
+
+    <!-- css -->
+    <link rel="stylesheet" href="{% static "css/vendor/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/vendor/font-awesome.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/vendor/bootstrap-social.css" %}">
+    {% render_bundle 'app_style' 'css' %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+{% include 'redesign/navbar.html' %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+
+    {% block hugepage %}
+    {% endblock %}
+
+</div>
+{#        <div class="footer">GoFriend &copy; Copyright Notice</div>#}
+
+<!-- js -->
+<script type="text/javascript" src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/vendor/jquery.validate.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/csrf.js' %}"></script>
+{#<script type="text/javascript"#}
+{#        src="http://maps.google.com/maps/api/js?sensor=false&v=3&libraries=geometry"></script>#}
+
+{% if user.is_authenticated %}
+    <script>
+        var USER = "{{ user.username }}";
+    </script>
+{% endif %}
+{% block extra_js %}
+{% endblock %}
+
+</body>
+</html>

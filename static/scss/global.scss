@@ -1,0 +1,76 @@
+@import 'variables';
+@import 'components/events';
+@import 'components/interests';
+
+.hnavbar-logout-form {
+  height: 100%;
+  margin: 0;
+  button {
+    border: 0;
+    height: 100%;
+    padding-left: 20px;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.hnavbar-element {
+  height: 50px;
+  &:hover {
+    background-color: #e7e7e7;
+  }
+  &:focus {
+    background-color: #e7e7e7;
+  }
+}
+
+.interest-thumbnail {
+  height: 100px !important;
+  width: 100px
+}
+
+.user-photo {
+  -webkit-transition: margin 1.5s ease;
+  -moz-transition: margin 1.5s ease;
+  -ms-transition: margin 1.5s ease;
+  -o-transition: margin 1.5s ease;
+  transition: margin 1.5s ease;
+  border-radius: 20%;
+}
+
+.hnavbar-avatar {
+  height: 40px;
+  width: 40px;
+  @extend .user-photo;
+}
+
+.hnavbar-avatar-dropdown {
+  padding-top: 5px !important;
+}
+
+.avatar .notification-indicator {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 17px;
+  height: 17px;
+}
+
+.avatar .notification-indicator img {
+  width: 100%;
+  height: auto;
+}
+
+
+.profile-first-last {
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+.hgreen {
+  color: green;
+}
+
+.social-account-icon {
+  padding-right: 10px;
+}
