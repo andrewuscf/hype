@@ -33,16 +33,17 @@ class GenericRelatedField(serializers.Field):
 class UserProfileSerializer(serializers.ModelSerializer):
     avatar_url = serializers.CharField(required=False)
     date_of_birth = serializers.DateField(write_only=True)
-    bio = serializers.CharField(required=False, allow_blank=True)
+    bio = serializers.CharField(required=False)
     age = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = UserProfile
+        exclude = ('user', )
 
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(validators=[UniqueValidator(queryset=User.objects.all())])
-    profile = UserProfileSerializer(read_only=True)
+    profile = UserProfileSerializer()
 
     def create_or_update_profile(self, user, profile_data):
         profile, created = UserProfile.objects.get_or_create(userprofile=user, defaults=profile_data)
@@ -51,6 +52,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         profile = validated_data.pop('profile')
+        print profile
         user = User.objects.create(**validated_data)
         self.create_or_update_profile(user, profile)
         return user

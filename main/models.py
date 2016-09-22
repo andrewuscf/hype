@@ -58,8 +58,10 @@ class UserProfile(models.Model):
     # setting avatar url based on social or local auth
     def calculate_age(self):
         today = timezone.now()
+        print self.date_of_birth
         self.age = today.year - self.date_of_birth.year - (
             (today.month, today.day) < (self.date_of_birth.month, self.date_of_birth.day))
+        self.save()
 
     def set_avatar_url(self):
         if self.user.socialaccount_set.all().count() > 0:
@@ -112,9 +114,9 @@ class UserProfile(models.Model):
         display_string = "{display} ({username})".format(display=self.display_name(), username=self.user.username)
         return display_string
 
-    def save(self, *args, **kwargs):
-        self.calculate_age()
-        super(UserProfile, self).save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     self.calculate_age()
+    #     super(UserProfile, self).save(*args, **kwargs)
 
 
 class ReportUser(models.Model):
